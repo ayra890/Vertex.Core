@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VPS Plan Configuration | Vertex Core</title>
+<meta name="description" content="Configure your Vertex Core Windows VPS plan.">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Inter', 'Segoe UI', Arial, sans-serif;
+}
+
+html{scroll-behavior:smooth}
+
+body{
+  background:#060a14;
+  color:#fff;
+  overflow-x:hidden;
+}
+
+a{color:inherit; text-decoration:none;}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 5%;
+background:rgba(10,15,30,.94);
+border-bottom:1px solid #1a233a;
+position:sticky;
+top:0;
+z-index:50;
+backdrop-filter:blur(12px)
+}
+
+.logo{
+display:flex;
+align-items:center;
+text-decoration:none
+}
+
+.logo img{
+width:185px;
+height:auto;
+display:block;
+object-fit:contain
+}
+
+nav a{
+color:#8b9bb4;
+text-decoration:none;
+margin:0 12px;
+font-size:14px
+}
+
+nav a:hover{
+color:#fff
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn-blue{
+background:#1e90ff;
+color:#fff;
+padding:10px 20px;
+border-radius:8px;
+text-decoration:none;
+font-weight:700;
+box-shadow:0 0 20px rgba(30,144,255,.4);
+border:none;
+display:inline-block
+}
+
+.btn-blue:hover{
+filter:brightness(1.1)
+}
+
+.btn-outline{
+border:1px solid #1a233a;
+padding:10px 20px;
+border-radius:8px;
+text-decoration:none;
+color:#8b9bb4;
+margin-left:10px;
+display:inline-block
+}
+
+.btn-outline:hover{
+border-color:#1e90ff;
+color:#fff
+}
+
+
+/* =========================
+   MENU BUTTON
+========================= */
+
+.menu-btn{
+display:block;
+background:transparent;
+border:1px solid #1e90ff;
+color:#1e90ff;
+width:44px;
+height:44px;
+border-radius:10px;
+font-size:25px;
+cursor:pointer
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+text-align:center;
+padding:90px 5% 45px;
+position:relative;
+min-height:650px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+overflow:hidden
+}
+
+.hero:before{
+content:"";
+position:absolute;
+inset:0;
+background:
+linear-gradient(180deg,rgba(6,10,20,.18),#060a14 92%),
+url('images/hero-servers.jpg') center/cover no-repeat;
+opacity:.25;
+z-index:-2
+}
+
+.hero:after{
+content:"";
+position:absolute;
+width:600px;
+height:300px;
+left:50%;
+top:25%;
+transform:translateX(-50%);
+background:rgba(0,123,255,.14);
+filter:blur(100px);
+z-index:-1
+}
+
+.hero h1{
+font-size:clamp(42px,6vw,72px);
+line-height:1.05;
+font-weight:800
+}
+
+.hero h1 span{
+color:#1e90ff;
+text-shadow:0 0 30px rgba(30,144,255,.6)
+}
+
+.hero p{
+color:#8b9bb4;
+margin:20px auto;
+max-width:700px;
+font-size:17px;
+line-height:1.7
+}
+
+.badges{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:20px;
+margin:28px 0;
+color:#8b9bb4;
+font-size:13px
+}
+
+
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar{
+position:fixed;
+top:0;
+left:-330px;
+width:310px;
+height:100vh;
+background:#080d18;
+border-right:1px solid #1e90ff;
+z-index:100;
+padding:25px;
+transition:.3s;
+box-shadow:10px 0 40px rgba(0,0,0,.5)
+}
+
+.sidebar.open{
+left:0
+}
+
+.side-head{
+display:flex;
+align-items:center;
+justify-content:space-between;
+margin-bottom:45px
+}
+
+.side-close{
+width:38px;
+height:38px;
+border-radius:50%;
+background:#0c1525;
+border:1px solid #27405f;
+color:#1e90ff;
+font-size:23px;
+cursor:pointer
+}
+
+.side-links{
+display:grid;
+gap:7px
+}
+
+.side-links a{
+padding:14px;
+color:#aab8cb;
+text-decoration:none;
+border-radius:9px
+}
+
+.side-links a:hover{
+background:#0d1a2d;
+color:#fff
+}
+
+.side-actions{
+display:grid;
+gap:12px;
+margin-top:25px
+}
+
+.side-actions a{
+margin:0;
+text-align:center
+}
+
+.overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.65);
+z-index:90;
+display:none
+}
+
+.overlay.show{
+display:block
+}
+
+
+/* =========================
+   LOGIN
+========================= */
+
+.login-link{
+background:none;
+border:0;
+color:#8b9bb4;
+text-decoration:none;
+margin-right:15px;
+font:inherit;
+cursor:pointer;
+padding:10px 2px
+}
+
+.login-link:hover{
+color:#fff
+}
+
+.login-modal{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.78);
+backdrop-filter:blur(8px);
+display:none;
+align-items:center;
+justify-content:center;
+padding:20px;
+z-index:200
+}
+
+.login-modal.show{
+display:flex
+}
+
+.login-box{
+width:min(430px,100%);
+background:linear-gradient(180deg,#0d1628,#080e1a);
+border:1px solid #1e90ff;
+border-radius:20px;
+padding:32px;
+position:relative;
+box-shadow:0 0 55px rgba(30,144,255,.22)
+}
+
+.login-brand{
+text-align:center;
+margin-bottom:24px
+}
+
+.login-brand .logo{
+justify-content:center
+}
+
+.login-brand .logo img{
+width:220px
+}
+
+.login-brand p{
+color:#70829e;
+font-size:13px;
+margin-top:8px;
+line-height:1.6
+}
+
+.login-close{
+position:absolute;
+right:16px;
+top:16px;
+width:36px;
+height:36px;
+border-radius:50%;
+background:#0b1525;
+border:1px solid #243957;
+color:#8b9bb4;
+font-size:22px;
+cursor:pointer
+}
+
+.login-close:hover{
+color:#fff;
+border-color:#1e90ff
+}
+
+.login-form{
+display:grid;
+gap:17px
+}
+
+.form-group{
+display:grid;
+gap:7px
+}
+
+.form-group label{
+font-size:13px;
+color:#b9c6d8;
+font-weight:600
+}
+
+.form-group input{
+width:100%;
+padding:13px 14px;
+border-radius:9px;
+border:1px solid #24324a;
+background:#070d18;
+color:#fff;
+outline:none;
+font-size:14px;
+transition:.2s
+}
+
+.form-group input:focus{
+border-color:#1e90ff;
+box-shadow:0 0 0 3px rgba(30,144,255,.12)
+}
+
+.form-group input.invalid{
+border-color:#ff5b6e;
+box-shadow:0 0 0 3px rgba(255,91,110,.08)
+}
+
+.password-wrap{
+position:relative
+}
+
+.password-wrap input{
+padding-right:78px
+}
+
+.show-pass{
+position:absolute;
+right:10px;
+top:50%;
+transform:translateY(-50%);
+background:none;
+border:0;
+color:#6f86a3;
+font-size:12px;
+font-weight:700;
+cursor:pointer
+}
+
+.show-pass:hover{
+color:#1e90ff
+}
+
+.field-error{
+min-height:16px;
+color:#ff7180;
+font-size:11px
+}
+
+.login-options{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px;
+font-size:12px;
+color:#70829e
+}
+
+.remember{
+display:flex;
+align-items:center;
+gap:7px
+}
+
+.remember input{
+accent-color:#1e90ff
+}
+
+.forgot{
+color:#1e90ff;
+text-decoration:none
+}
+
+.forgot:hover{
+text-decoration:underline
+}
+
+.login-submit{
+width:100%;
+padding:13px;
+border:0;
+border-radius:9px;
+background:linear-gradient(135deg,#1e90ff,#0066ff);
+color:#fff;
+font-weight:800;
+font-size:14px;
+cursor:pointer;
+box-shadow:0 0 25px rgba(30,144,255,.25)
+}
+
+.login-submit:hover{
+filter:brightness(1.08)
+}
+
+.login-status{
+display:none;
+padding:10px 12px;
+border-radius:8px;
+background:rgba(40,190,120,.1);
+border:1px solid rgba(40,190,120,.35);
+color:#67dfa8;
+font-size:12px;
+text-align:center
+}
+
+.login-status.show{
+display:block
+}
+
+.login-note{
+text-align:center;
+color:#5f718b;
+font-size:11px;
+line-height:1.5;
+margin-top:2px
+}
+
+
+
+/* =========================
+   CONFIGURATION SECTION
+========================= */
+.detail-wrap{
+  padding:50px 5% 80px;
+}
+
+.main-container{
+  max-width:1100px;
+  margin:auto;
+}
+
+.section-title{
+  font-size:24px;
+  font-weight:700;
+  margin-bottom:20px;
+  color:#fff;
+}
+
+.config-grid{
+  display:grid;
+  grid-template-columns:1fr 340px;
+  gap:30px;
+  align-items:start;
+}
+
+.config-left{
+  display:flex;
+  flex-direction:column;
+  gap:30px;
+}
+
+.card-box{
+  background:linear-gradient(180deg,#121a2e,#0a1020);
+  border:1px solid #1e293b;
+  border-radius:18px;
+  padding:28px;
+  box-shadow:0 15px 45px rgba(0,0,0,.25);
+  transition:all 0.3s ease;
+}
+
+.location-box label{
+  display:block;
+  font-size:14px;
+  color:#8b9bb4;
+  margin-bottom:12px;
+  font-weight:600;
+}
+
+.location-box label span{ color:#1e90ff; }
+
+.location-box select{
+  width:100%;
+  padding:14px 16px;
+  background:#0a1220;
+  border:1px solid #1e90ff;
+  border-radius:10px;
+  font-size:14px;
+  color:#fff;
+  outline:none;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.location-box select:focus{
+  box-shadow:0 0 15px rgba(30,144,255,0.4);
+}
+
+.billing-cycles{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+  gap:16px;
+}
+
+.cycle-card{
+  background:#0a1220;
+  border:1.5px solid #1c2b42;
+  border-radius:14px;
+  padding:20px;
+  cursor:pointer;
+  position:relative;
+  transition:all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.cycle-card:hover{
+  border-color:#1e90ff;
+  transform:translateY(-3px);
+  box-shadow:0 8px 25px rgba(30,144,255,0.15);
+}
+
+.cycle-card.active{
+  border-color:#1e90ff;
+  background:linear-gradient(180deg, rgba(30,144,255,0.12), rgba(10,18,32,0.9));
+  box-shadow:0 0 20px rgba(30,144,255,0.25);
+}
+
+.cycle-header{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.radio-dot{
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  border:2px solid #3a4d6d;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:0.2s;
+}
+
+.cycle-card.active .radio-dot{
+  border-color:#1e90ff;
+  background:#1e90ff;
+}
+
+.radio-dot::after{
+  content:"";
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:#fff;
+  opacity:0;
+  transition:0.2s;
+}
+
+.cycle-card.active .radio-dot::after{
+  opacity:1;
+}
+
+.cycle-title{
+  font-size:15px;
+  font-weight:700;
+  color:#fff;
+}
+
+.cycle-price{
+  font-size:18px;
+  font-weight:800;
+  color:#1e90ff;
+  margin-left:28px;
+}
+
+.cycle-discount{
+  display:inline-block;
+  background:rgba(255, 64, 129, 0.15);
+  color:#ff4081;
+  border:1px solid rgba(255, 64, 129, 0.3);
+  font-size:11px;
+  font-weight:700;
+  padding:3px 8px;
+  border-radius:12px;
+  margin-left:28px;
+  width:fit-content;
+}
+
+.strike-price{
+  text-decoration:line-through;
+  color:#5a6d8a;
+  font-size:12px;
+  margin-left:6px;
+}
+
+/* Summary Card */
+.summary-card{
+  background:linear-gradient(180deg, #180a3a, #0d071a);
+  border:1px solid #351a6d;
+  border-radius:20px;
+  padding:28px;
+  position:sticky;
+  top:90px;
+  box-shadow:0 20px 50px rgba(0, 0, 0, 0.4);
+  animation:fadeIn 0.5s ease-in-out;
+}
+
+.summary-card h3{
+  font-size:18px;
+  font-weight:700;
+  color:#fff;
+  margin-bottom:20px;
+  padding-bottom:12px;
+  border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+.summary-line{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:13px;
+  color:#aab8cb;
+  margin-bottom:15px;
+}
+
+.summary-line strong{
+  color:#fff;
+  font-weight:600;
+}
+
+.summary-divider{
+  height:1px;
+  background:rgba(255,255,255,0.1);
+  margin:20px 0;
+}
+
+.total-due-label{
+  font-size:12px;
+  color:#aab8cb;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  margin-bottom:8px;
+}
+
+.total-due-price{
+  font-size:42px;
+  font-weight:900;
+  color:#fff;
+  line-height:1;
+  transition:all 0.3s ease;
+}
+
+.total-due-currency{
+  font-size:22px;
+  font-weight:800;
+  color:#1e90ff;
+  margin-bottom:25px;
+}
+
+.continue-btn{
+  width:100%;
+  background:#1e90ff;
+  color:#fff;
+  border:none;
+  padding:15px;
+  font-size:16px;
+  font-weight:700;
+  border-radius:10px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  transition:0.3s;
+  box-shadow:0 0 25px rgba(30,144,255,0.4);
+}
+
+.continue-btn:hover{
+  filter:brightness(1.15);
+  transform:translateY(-2px);
+  box-shadow:0 0 35px rgba(30,144,255,0.6);
+}
+
+/* Animations */
+.price-pop{
+  animation:popPrice 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popPrice{
+  0%{ transform:scale(1); }
+  50%{ transform:scale(1.15); color:#1e90ff; }
+  100%{ transform:scale(1); }
+}
+
+@keyframes fadeIn{
+  from{ opacity:0; transform:translateY(10px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+padding:40px 5% 15px;
+background:#080e1b;
+border-top:1px solid #121a2e;
+color:#8b9bb4
+}
+
+.footer-grid{
+display:grid;
+grid-template-columns:1.2fr 1fr 1fr 1fr;
+gap:35px;
+max-width:1100px;
+margin:0 auto 18px;
+align-items:start
+}
+
+.footer-brand{
+max-width:280px
+}
+
+.footer-brand .logo img{
+width:185px;
+height:auto;
+display:block;
+margin-bottom:15px
+}
+
+.footer-brand p{
+color:#70829e;
+font-size:13px;
+line-height:1.7
+}
+
+.footer-column h3{
+font-size:16px;
+color:#fff;
+margin-bottom:14px;
+white-space:nowrap
+}
+
+.footer-column a{
+display:block;
+color:#8b9bb4;
+text-decoration:none;
+font-size:13px;
+margin:0 0 9px;
+transition:.2s;
+white-space:nowrap
+}
+
+.footer-column a:hover{
+color:#1e90ff
+}
+
+.footer-bottom{
+text-align:center;
+padding-top:15px;
+border-top:1px solid #121a2e;
+color:#5a6d8a;
+font-size:12px;
+line-height:1.8
+}
+
+
+/* =========================
+   WHATSAPP
+========================= */
+
+.whatsapp{
+position:fixed;
+right:22px;
+bottom:22px;
+z-index:70;
+background:#18c968;
+color:#fff;
+text-decoration:none;
+padding:13px 18px;
+border-radius:30px;
+font-weight:700;
+box-shadow:0 8px 30px rgba(24,201,104,.3)
+}
+
+
+
+/* Responsive Styles */
+@media(max-width:900px){
+  .config-grid{ grid-template-columns:1fr; }
+  .summary-card{ position:static; }
+  nav, .header-actions{ display:none; }
+  .menu-btn{ display:block; }
+  .footer-grid{ grid-template-columns:1fr 1fr; }
+}
+
+@media(max-width:500px){
+  .footer-grid{ grid-template-columns:1fr; }
+  .footer-bottom{ flex-direction:column; gap:10px; text-align:center; }
+}
+</style>
+</head>
+<body>
+
+
+<!-- =========================
+     OVERLAY
+========================= -->
+
+<div class="overlay" id="overlay"></div>
+
+
+<!-- =========================
+     SIDEBAR
+========================= -->
+
+<aside class="sidebar" id="sidebar">
+
+<div class="side-head">
+
+<a class="logo" href="index.html">
+<img src="images/logo.jpg" alt="Vertex Core">
+</a>
+
+<button class="side-close" id="closeMenu">×</button>
+
+</div>
+
+
+<div class="side-links">
+
+<a href="index.html">HOME</a>
+<a href="pricing.html">PRICING</a>
+<a href="locations.html">LOCATIONS</a>
+<a href="vps.html">VPS</a>
+<a href="support.html">SUPPORT</a>
+<a href="about.html">ABOUT US</a>
+<a href="contact.html">CONTACT US</a>
+
+</div>
+
+
+<div class="side-actions">
+
+<a href="order.html" class="btn-blue">
+Order Now
+</a>
+
+<a href="contact.html" class="btn-outline">
+Contact Us
+</a>
+
+</div>
+
+</aside>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+<button class="menu-btn" id="openMenu" aria-label="Open menu">
+☰
+</button>
+
+
+<a class="logo" href="index.html">
+
+<img src="images/logo.jpg" alt="Vertex Core">
+
+</a>
+
+
+<nav>
+
+<a href="index.html">Home</a>
+<a href="pricing.html">Pricing</a>
+<a href="vps.html">VPS</a>
+<a href="support.html">Support</a>
+<a href="blog.html">Blog</a>
+
+</nav>
+
+
+<div class="header-actions">
+
+<a href="login.html" class="login-link">
+Login
+</a>
+
+<a href="order.html" class="btn-blue">
+Get Started
+</a>
+
+</div>
+
+</header>
+
+
+
+<!-- Main Body -->
+<main>
+  <section class="hero">
+    <div class="eyebrow">Vertex Core VPS</div>
+    <h1>Configure Your <span id="heroPlanTitle">VPS Plan</span></h1>
+    <p>Select your preferred location and billing cycle to continue with deployment.</p>
+  </section>
+
+  <section class="detail-wrap">
+    <div class="main-container">
+      <div class="config-grid">
+        
+        <!-- Left Side Options -->
+        <div class="config-left">
+          
+          <!-- Location Selection Box -->
+          <div class="card-box location-box">
+            <h2 class="section-title">1. Server Location</h2>
+            <label for="vpsLocation">Choose a VPS Location <span>*</span></label>
+            <select id="vpsLocation" onchange="updateCalculations()">
+              <optgroup label="Tier 1 Standard Locations ($15.00/mo base)">
+                <option value="Italy" selected>Italy</option>
+                <option value="Greece">Greece</option>
+                <option value="Norway">Norway</option>
+                <option value="Canada">Canada</option>
+                <option value="London">London (UK)</option>
+                <option value="Spain">Spain</option>
+                <option value="Manchester UK">Manchester (UK)</option>
+                <option value="Germany">Germany</option>
+                <option value="Sweden">Sweden</option>
+                <option value="France">France</option>
+                <option value="Austria">Austria</option>
+                <option value="Belgium">Belgium</option>
+                <option value="Hungary">Hungary</option>
+                <option value="Netherlands">Netherlands</option>
+                <option value="Ireland">Ireland</option>
+                <option value="Australia">Australia</option>
+              </optgroup>
+              <optgroup label="Middle East & Asia Tier ($20.00/mo base)">
+                <option value="KSA">Saudi Arabia (KSA)</option>
+                <option value="South Korea">South Korea</option>
+                <option value="Bangladesh">Bangladesh</option>
+                <option value="Bahrain">Bahrain</option>
+                <option value="Qatar">Qatar</option>
+                <option value="UAE">United Arab Emirates (UAE)</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <!-- Billing Cycle Cards -->
+          <div class="card-box">
+            <h2 class="section-title">2. Choose Billing Cycle</h2>
+            <div class="billing-cycles">
+              
+              <div class="cycle-card active" data-cycle="monthly" onclick="selectCycle('monthly')">
+                <div class="cycle-header">
+                  <div class="radio-dot"></div>
+                  <span class="cycle-title">Monthly</span>
+                </div>
+                <div class="cycle-price" id="price-monthly">$15.00 USD</div>
+              </div>
+
+              <div class="cycle-card" data-cycle="quarterly" onclick="selectCycle('quarterly')">
+                <div class="cycle-header">
+                  <div class="radio-dot"></div>
+                  <span class="cycle-title">Quarterly</span>
+                </div>
+                <div class="cycle-price" id="price-quarterly">$45.00 USD</div>
+              </div>
+
+              <div class="cycle-card" data-cycle="semi-annually" onclick="selectCycle('semi-annually')">
+                <div class="cycle-header">
+                  <div class="radio-dot"></div>
+                  <span class="cycle-title">Semi-Annually</span>
+                </div>
+                <div class="cycle-price" id="price-semi">$90.00 USD</div>
+              </div>
+
+              <div class="cycle-card" data-cycle="annually" onclick="selectCycle('annually')">
+                <div class="cycle-header">
+                  <div class="radio-dot"></div>
+                  <span class="cycle-title">Annually</span>
+                </div>
+                <div class="cycle-price" id="price-annually">$150.00 USD</div>
+                <div class="cycle-discount" id="discount-tag">Save 17% <span class="strike-price" id="strike-price">$180.00 USD</span></div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Side Configuration Summary -->
+        <div class="summary-card">
+          <h3>Configuration Summary</h3>
+          
+          <div class="summary-line">
+            <span>Product:</span>
+            <strong id="summaryPlanName">VPS 2GB</strong>
+          </div>
+          
+          <div class="summary-line">
+            <span>Location:</span>
+            <strong id="summaryLocation">Italy</strong>
+          </div>
+
+          <div class="summary-line">
+            <span>Billing Cycle:</span>
+            <strong id="summaryCycle">Monthly</strong>
+          </div>
+
+          <div class="summary-line" style="margin-top:10px; font-size:12px;">
+            <span id="summaryRateDescription">VPS Promotional Rate</span>
+            <strong id="summaryRatePrice">$15.00 USD/mo</strong>
+          </div>
+
+          <div class="summary-divider"></div>
+
+          <div class="total-due-label">Configuration Total Due Today</div>
+          <div class="total-due-price">$<span id="summaryTotalPrice">15.00</span></div>
+          <div class="total-due-currency">USD</div>
+
+          <button class="continue-btn" onclick="proceedToCheckout()">
+            <span>➜ Continue</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- =========================
+     WHATSAPP
+========================= -->
+
+<a
+class="whatsapp"
+href="contact.html"
+target="_blank"
+rel="noopener"
+>
+💬 Contact Support
+</a>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+
+<div class="footer-grid">
+
+
+<!-- BRAND -->
+
+<div class="footer-brand">
+
+<a class="logo" href="index.html">
+
+<img
+src="images/logo.jpg"
+alt="Vertex Core"
+>
+
+</a>
+
+
+<p>
+Enterprise-grade Windows VPS infrastructure built for performance,
+secure access and reliable connectivity.
+</p>
+
+
+<p style="margin-top:12px">
+
+<a
+href="mailto:vertexcore95@gmail.com"
+style="color:#8b9bb4;text-decoration:none"
+>
+vertexcore95@gmail.com
+</a>
+
+</p>
+
+</div>
+
+
+<!-- COMPANY -->
+
+<div class="footer-column">
+
+<h3>
+Company
+</h3>
+
+<a href="about.html">
+About Us
+</a>
+
+<a href="features.html">
+Services / Features
+</a>
+
+<a href="locations.html">
+Locations
+</a>
+
+<a href="vps.html">
+VPS
+</a>
+
+<a href="blog.html">
+Blog
+</a>
+
+</div>
+
+
+<!-- SUPPORT -->
+
+<div class="footer-column">
+
+<h3>
+Support
+</h3>
+
+<a href="support.html">
+Help &amp; Supports
+</a>
+
+<a href="docs.html">
+Documentation
+</a>
+
+<a href="dashboard.html">
+Customer Dashboard
+</a>
+
+</div>
+
+
+<!-- LEGAL -->
+
+<div class="footer-column">
+
+<h3>
+Legal
+</h3>
+
+<a href="terms.html">
+Terms of Services
+</a>
+
+<a href="privacy.html">
+Privacy Policy
+</a>
+
+<a href="refund.html">
+Refund Policy
+</a>
+
+<a href="faqs.html">
+FAQs
+</a>
+
+<a href="contact.html">
+Contact Us
+</a>
+
+<a href="login.html">
+Login
+</a>
+
+</div>
+
+
+</div>
+
+
+<!-- FOOTER BOTTOM -->
+
+<div class="footer-bottom">
+
+© 2026 Vertex Core - All plans include free backups - 99.95% uptime SLA - Cancel anytime - 24/7 Support
+
+</div>
+
+
+</footer>
+
+
+
+
+<script>
+/* Navbar sidebar controls */
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('overlay');
+const openMenuButton = document.getElementById('openMenu');
+const closeMenuButton = document.getElementById('closeMenu');
+
+function openSide(){
+  if (sidebar) sidebar.classList.add('open');
+  if (overlay) overlay.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+function closeSide(){
+  if (sidebar) sidebar.classList.remove('open');
+  if (overlay) overlay.classList.remove('show');
+  document.body.style.overflow = '';
+}
+if (openMenuButton) openMenuButton.addEventListener('click', openSide);
+if (closeMenuButton) closeMenuButton.addEventListener('click', closeSide);
+if (overlay) overlay.addEventListener('click', closeSide);
+document.querySelectorAll('.side-links a, .side-actions a').forEach(link => {
+  link.addEventListener('click', closeSide);
+});
+
+/* Pricing Database */
+const pricingDatabase = {
+  // Tier 1 Countries
+  "Italy": { "2gb": [15, 45, 90, 150], "4gb": [24, 72, 144, 240], "8gb": [38, 114, 228, 380] },
+  "Greece": { "2gb": [15, 45, 90, 150], "4gb": [24, 72, 144, 240], "8gb": [38, 114, 228, 380] },
+  "Norway": { "2gb": [15, 45, 90, 150], "4gb": [24, 72, 144, 240], "8gb": [38, 114, 228, 380] },
+  "Canada": { "2gb": [15, 45, 90, 150], "4gb": [24, 72, 144, 240], "8gb": [38, 114, 228, 380] },
+  "London": { "2gb": [15, 45, 90, 150], "4gb": [24, 72, 144, 240], "8gb": [38, 114, 228, 380] },
+  "Spain": { "2gb": [15, 45, 90, 150], "4gb": [24, 72, 144, 240], "8gb": [38, 114, 228, 380] },
+  "Manchester UK": { "2gb": [15, 45, 90, 150], "4gb": [24, 72, 144, 240], "8gb": [38, 114, 228, 380] },
+  "Germany": { "2gb": [15, 45, 90, 150], "4gb": [24, 72, 144, 240], "8gb": [38, 114, 228, 380] },
+  "Sweden": { "2gb": [15, 45, 90, 150], "4gb": [24, 72, 144, 240], "8gb": [38, 114, 228, 380] },
+  "France": { "2gb": [15, 45, 90, 150], "4gb": [24, 72, 144, 240], "8gb": [38, 114, 228, 380] },
+  "Austria": { "2gb": [15, 45, 90, 150], "4gb": [24, 72, 144, 240], "8gb": [38, 114, 228, 380] },
+  "Belgium": { "2gb": [15, 45, 90, 150], "4gb": [24, 72, 144, 240], "8gb": [38, 114, 228, 380] },
+  "Hungary": { "2gb": [15, 45, 90, 150], "4gb": [24, 72, 144, 240], "8gb": [38, 114, 228, 380] },
+  "Netherlands": { "2gb": [15, 45, 90, 150], "4gb": [24, 72, 144, 240], "8gb": [38, 114, 228, 380] },
+  "Ireland": { "2gb": [15, 45, 90, 150], "4gb": [24, 72, 144, 240], "8gb": [38, 114, 228, 380] },
+  "Australia": { "2gb": [15, 45, 90, 150], "4gb": [24, 72, 144, 240], "8gb": [38, 114, 228, 380] },
+
+  // Tier 2 Middle East / Asia
+  "KSA": { "2gb": [20, 60, 120, 240], "4gb": [35, 105, 210, 420], "8gb": [50, 150, 300, 600] },
+  "South Korea": { "2gb": [20, 60, 120, 240], "4gb": [35, 105, 210, 420], "8gb": [50, 150, 300, 600] },
+  "Bangladesh": { "2gb": [20, 60, 120, 240], "4gb": [35, 105, 210, 420], "8gb": [50, 150, 300, 600] },
+  "Bahrain": { "2gb": [20, 60, 120, 240], "4gb": [35, 105, 210, 420], "8gb": [50, 150, 300, 600] },
+  "Qatar": { "2gb": [20, 60, 120, 240], "4gb": [35, 105, 210, 420], "8gb": [50, 150, 300, 600] },
+  "UAE": { "2gb": [20, 60, 120, 240], "4gb": [35, 105, 210, 420], "8gb": [50, 150, 300, 600] }
+};
+
+const params = new URLSearchParams(window.location.search);
+let selectedPlanKey = params.get("plan") || "2gb";
+let selectedCycleKey = "monthly";
+
+function selectCycle(cycle){
+  selectedCycleKey = cycle;
+  document.querySelectorAll('.cycle-card').forEach(card => {
+    card.classList.remove('active');
+    if(card.getAttribute('data-cycle') === cycle){
+      card.classList.add('active');
+    }
+  });
+  updateCalculations();
+}
+
+function updateCalculations(){
+  const locationSelect = document.getElementById("vpsLocation");
+  const selectedLocation = locationSelect.value || "Italy";
+  
+  const restrictedLocations = ["KSA","South Korea","Bangladesh","Bahrain","Qatar","UAE"];
+  if(restrictedLocations.includes(selectedLocation) && selectedPlanKey === "8gb") selectedPlanKey = "4gb";
+  const planData = (pricingDatabase[selectedLocation] && pricingDatabase[selectedLocation][selectedPlanKey]) || pricingDatabase["Italy"]["2gb"];
+  
+  const monthlyP = planData[0];
+  const quarterlyP = planData[1];
+  const semiP = planData[2];
+  const annualP = planData[3];
+  
+  // Update Cycle Card Labels
+  document.getElementById("price-monthly").textContent = `$${monthlyP.toFixed(2)} USD`;
+  document.getElementById("price-quarterly").textContent = `$${quarterlyP.toFixed(2)} USD`;
+  document.getElementById("price-semi").textContent = `$${semiP.toFixed(2)} USD`;
+  document.getElementById("price-annually").textContent = `$${annualP.toFixed(2)} USD`;
+  
+  const strikeVal = (monthlyP * 12).toFixed(2);
+  document.getElementById("strike-price").textContent = `$${strikeVal} USD`;
+
+  // Determine Active Cycle Price
+  let activeTotal = monthlyP;
+  let cycleText = "Monthly";
+  let rateSuffix = "USD/mo";
+
+  if(selectedCycleKey === "quarterly"){
+    activeTotal = quarterlyP;
+    cycleText = "Quarterly";
+    rateSuffix = "USD/qtr";
+  } else if(selectedCycleKey === "semi-annually"){
+    activeTotal = semiP;
+    cycleText = "Semi-Annually";
+    rateSuffix = "USD/6mo";
+  } else if(selectedCycleKey === "annually"){
+    activeTotal = annualP;
+    cycleText = "Annually";
+    rateSuffix = "USD/yr";
+  }
+
+  // Update Summary Card
+  document.getElementById("summaryPlanName").textContent = `VPS ${selectedPlanKey.toUpperCase()}`;
+  document.getElementById("heroPlanTitle").textContent = `VPS ${selectedPlanKey.toUpperCase()}`;
+  document.getElementById("summaryLocation").textContent = selectedLocation;
+  document.getElementById("summaryCycle").textContent = cycleText;
+  document.getElementById("summaryRatePrice").textContent = `$${activeTotal.toFixed(2)} ${rateSuffix}`;
+  
+  const totalElem = document.getElementById("summaryTotalPrice");
+  totalElem.textContent = activeTotal.toFixed(2);
+  
+  // Animation on Price Change
+  totalElem.classList.remove("price-pop");
+  void totalElem.offsetWidth; 
+  totalElem.classList.add("price-pop");
+}
+
+function proceedToCheckout(){
+  const location = document.getElementById("vpsLocation").value;
+  const url = `order.html?plan=${encodeURIComponent(selectedPlanKey)}&cycle=${encodeURIComponent(selectedCycleKey)}&location=${encodeURIComponent(location)}`;
+  window.location.href = url;
+}
+
+window.onload = function(){
+  const params = new URLSearchParams(window.location.search);
+  const requestedLocation = params.get("location");
+  const locationSelect = document.getElementById("vpsLocation");
+  if(requestedLocation && [...locationSelect.options].some(option => option.value.toLowerCase() === requestedLocation.toLowerCase())){
+    locationSelect.value = [...locationSelect.options].find(option => option.value.toLowerCase() === requestedLocation.toLowerCase()).value;
+  }
+  const restrictedLocations = ["KSA","South Korea","Bangladesh","Bahrain","Qatar","UAE"];
+  const planSelect = document.getElementById("vpsPlan");
+  if(planSelect){
+    const option8 = [...planSelect.options].find(option => option.value.toLowerCase() === "8gb");
+    if(option8) option8.disabled = restrictedLocations.includes(locationSelect.value);
+  }
+  if(params.get("cycle")) selectCycle(params.get("cycle"));
+  updateCalculations();
+};
+</script>
+</body>
+</html>
