@@ -182,9 +182,14 @@ function initInvoice(){
  $("stripeInstructions").style.display=data.payment_method==="Stripe Debit/Credit Card"?"grid":"none";
  $("statusBadge").className="status "+(isPaid?"paid":"unpaid");$("statusBadge").textContent=isPaid?"✓ Paid":"● Unpaid";
  $("unpaidMessage").style.display=isPaid?"none":"block";$("paidMessage").style.display=isPaid?"block":"none";
- if(data.email_status==="sent")$("emailNotice").textContent="Order request emails were sent. This confirms receipt of the request only; it does not mean payment has been verified.";
- else if(data.email_status==="failed")$("emailNotice").textContent="Invoice created, but email delivery failed. Please contact vertexcore95@gmail.com and provide invoice number "+invoiceNo+".";
- else $("emailNotice").textContent="Invoice created. Email notifications are not configured yet, so no email has been sent. This invoice remains Unpaid until payment is verified.";
+ if(data.email_status==="sent")
+  $("emailNotice").textContent="Order request emails were sent. This confirms receipt of the request only; it does not mean payment has been verified.";
+else if(data.email_status==="failed")
+  $("emailNotice").textContent="Invoice created, but email delivery failed. Please contact vertexcore95@gmail.com and provide invoice number "+invoiceNo+".";
+else if(data.email_status==="submitted")
+  $("emailNotice").textContent="Your order email request was submitted. Email delivery is not confirmed yet. Your invoice remains Unpaid until payment is verified.";
+else
+  $("emailNotice").textContent="Invoice created. Email notifications are not configured yet, so no email has been sent. This invoice remains Unpaid until payment is verified.";
 }
 initInvoice();
 </script>
