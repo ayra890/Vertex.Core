@@ -1840,7 +1840,7 @@ box.classList.toggle("show",messages.length>0);
 if(messages.length){box.scrollIntoView({behavior:"smooth",block:"start"});}
 }
 
-$("placeOrderBtn").onclick=()=>{
+$("placeOrderBtn").onclick=async()=>{
   const plan=$("planSelect").value;
   const locationName=$("locationSelect").value;
   const selectedPayment=document.querySelector('input[name="payment"]:checked');
@@ -1857,6 +1857,27 @@ $("placeOrderBtn").onclick=()=>{
   const invoiceData={invoice_id:invoiceId,invoice_date:now.toISOString(),due_date:now.toISOString(),customer_name:`${customer.firstName} ${customer.lastName}`.trim(),customer_email:customer.email,customer_phone:customer.phone,customer_address:customer.address,customer_city:customer.city,customer_postal:customer.postal,plan:plan,plan_name:pricing[plan].name,server_location:locationName,quantity:quantity,billing_cycle:cycleLabels[cycle],payment_method:selectedPayment.value,total_price:total,status:"unpaid",email_status:"not_configured"};
   try{localStorage.setItem("vertexCoreLatestInvoice",JSON.stringify(invoiceData));localStorage.setItem("vertexCoreLastOrderRequest",JSON.stringify(invoiceData));}
   catch(e){alertMsg("error","Could not save order","Your browser could not save the order details. Please enable local storage and try again.");return;}
+  
+  invoiceData.email_status = "submitted";
+  localStorage.setItem("vertexCoreLatestInvoice", JSON.stringify(invoiceData));
+  localStorage.setItem("vertexCoreLastOrderRequest", JSON.stringify(invoiceData));
+
+  try {
+    await fetch(
+      "https://script.google.com/macros/s/AKfycbwr4fcFgo0zGrXKMieDi_IwY1GJf2WwSAybxpQKLNtOdcKj4j5URoVOOuMy_a2h73LI5w/exec",
+      {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8"
+        },
+        body: JSON.stringify(invoiceData)
+      }
+    );
+  } catch (error) {
+    console.error("Order email request failed:", error);
+  }
+
   const whatsappText=[
     "NEW VERTEX CORE VPS ORDER",
     "Invoice / Order No: "+invoiceId,
@@ -1932,3 +1953,4 @@ init();
 
 </body>
 </html>
+..ye rhi order ka html
