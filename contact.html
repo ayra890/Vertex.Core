@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="icon" href="/favicon.png" type="image/png">
 <title>Contact Us | Vertex Core</title>
 <meta name="description" content="Contact Vertex Core for sales, VPS questions and support requests.">
 
@@ -1946,13 +1945,14 @@ grid-column:1/-1
       <div class="contact-item">
         <strong>WhatsApp</strong>
         <span>Chat with our support team</span>
+        <span>💬 000-000-0000</span>
       </div>
 
     </div>
 
     <div class="form-shell">
 
-      <form onsubmit="event.preventDefault();alert('Your message form is ready. Connect it to your email/backend to send messages.');">
+      <form id="contactWhatsAppForm">
 
         <div class="form-grid">
 
@@ -1961,7 +1961,9 @@ grid-column:1/-1
             <input
               class="form-control"
               type="text"
-              placeholder="Enter your name">
+              id="contactName"
+              placeholder="Enter your name"
+              required>
           </div>
 
           <div class="form-group-block">
@@ -1969,7 +1971,9 @@ grid-column:1/-1
             <input
               class="form-control"
               type="email"
-              placeholder="you@example.com">
+              id="contactEmail"
+              placeholder="you@example.com"
+              required>
           </div>
 
           <div class="form-group-block full">
@@ -1977,14 +1981,18 @@ grid-column:1/-1
             <input
               class="form-control"
               type="text"
-              placeholder="How can we help?">
+              id="contactSubject"
+              placeholder="How can we help?"
+              required>
           </div>
 
           <div class="form-group-block full">
             <label class="form-label">Message</label>
             <textarea
               class="form-textarea"
-              placeholder="Write your message..."></textarea>
+              id="contactMessage"
+              placeholder="Write your message..."
+              required></textarea>
           </div>
 
           <div class="full">
@@ -2007,7 +2015,7 @@ grid-column:1/-1
 
 <a
   class="whatsapp"
-  href="contact.html"
+  href="https://wa.me/923239529520?text=Hello%20Vertex%20Core%20Support"
   target="_blank"
   rel="noopener">
   💬 Contact Support
@@ -2120,6 +2128,24 @@ document
   .querySelectorAll('.side-links a,.side-actions a')
   .forEach(a => a.addEventListener('click',closeSide));
 
+</script>
+
+
+<script>
+(function(){
+  const form=document.getElementById('contactWhatsAppForm');
+  if(!form)return;
+  form.addEventListener('submit',function(event){
+    event.preventDefault();
+    const name=document.getElementById('contactName').value.trim();
+    const email=document.getElementById('contactEmail').value.trim();
+    const subject=document.getElementById('contactSubject').value.trim();
+    const message=document.getElementById('contactMessage').value.trim();
+    if(!name||!email||!subject||!message){form.reportValidity();return;}
+    const text='Vertex Core Contact Message\n\nName: '+name+'\nEmail: '+email+'\nSubject: '+subject+'\nMessage: '+message;
+    window.open('https://wa.me/923239529520?text='+encodeURIComponent(text),'_blank','noopener');
+  });
+})();
 </script>
 
 </body>
