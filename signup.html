@@ -1,8 +1,288 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Create your Vertex Core account to manage your hosting services."><script type="module" src="firebase-config.js"></script><title>Create Account | Vertex Core</title><style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:Inter,Segoe UI,Arial,sans-serif}html{scroll-behavior:smooth}body{min-height:100vh;background:#060a14;color:#fff;display:flex;flex-direction:column}a{color:inherit}header{display:flex;justify-content:space-between;align-items:center;padding:15px 5%;background:rgba(10,15,30,.94);border-bottom:1px solid #1a233a;position:sticky;top:0;z-index:50;backdrop-filter:blur(12px)}.logo{display:flex;align-items:center;text-decoration:none}.logo img{width:185px;height:auto;display:block;object-fit:contain}nav a{color:#8b9bb4;text-decoration:none;margin:0 12px;font-size:14px}nav a:hover{color:#fff}.header-actions{display:flex;align-items:center;gap:12px}.btn-blue,.btn-outline{padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:700;display:inline-flex;align-items:center;justify-content:center;border:1px solid transparent;cursor:pointer}.btn-blue{background:#1e90ff;color:#fff;box-shadow:0 0 20px rgba(30,144,255,.22)}.btn-outline{border-color:#24324a;color:#aab8cb;background:transparent}.menu-btn{display:none;background:transparent;border:1px solid #1e90ff;color:#1e90ff;width:42px;height:42px;border-radius:10px;font-size:24px;cursor:pointer}.sidebar{position:fixed;top:0;left:-330px;width:310px;height:100vh;background:#080d18;border-right:1px solid #1e90ff;z-index:100;padding:25px;transition:.3s;box-shadow:10px 0 40px rgba(0,0,0,.5)}.sidebar.open{left:0}.side-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:35px}.side-close{width:38px;height:38px;border-radius:50%;background:#0c1525;border:1px solid #27405f;color:#1e90ff;font-size:23px;cursor:pointer}.side-links{display:grid;gap:7px}.side-links a{padding:13px;color:#aab8cb;text-decoration:none;border-radius:9px}.side-links a:hover{background:#0d1a2d;color:#fff}.side-actions{display:grid;gap:12px;margin-top:25px}.side-actions a{text-align:center}.overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:90;display:none}.overlay.show{display:block}.auth-main{flex:1;display:grid;place-items:center;padding:55px 18px;position:relative;isolation:isolate;overflow:hidden}.auth-main:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,10,20,.48),#060a14 95%),url('images/hero-servers.jpg') center/cover no-repeat;opacity:.24;z-index:-2}.auth-main:after{content:"";position:absolute;width:440px;height:360px;left:50%;top:18%;transform:translateX(-50%);background:rgba(0,123,255,.14);filter:blur(100px);z-index:-1}.auth-card{width:min(460px,100%);background:linear-gradient(180deg,#0d1628,#080e1a);border:1px solid #1e90ff;border-radius:20px;padding:34px;box-shadow:0 0 55px rgba(30,144,255,.15)}.auth-brand{text-align:center;margin-bottom:25px}.auth-brand a{justify-content:center}.auth-brand img{width:205px}.eyebrow{color:#1e90ff;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:800;margin-bottom:10px}.auth-brand h1{font-size:30px;margin:10px 0}.auth-brand p{color:#8b9bb4;font-size:13px;line-height:1.7}.auth-form{display:grid;gap:16px}.field{display:grid;gap:7px}.field label{font-size:13px;color:#b9c6d8;font-weight:600}.field input{width:100%;padding:13px 14px;border-radius:9px;border:1px solid #24324a;background:#070d18;color:#fff;outline:none;font-size:14px}.field input:focus{border-color:#1e90ff;box-shadow:0 0 0 3px rgba(30,144,255,.12)}.password-wrap{position:relative}.password-wrap input{padding-right:72px}.show-pass{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:0;color:#8b9bb4;font-size:12px;font-weight:700;cursor:pointer}.options{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:12px;color:#8b9bb4}.remember{display:flex;align-items:center;gap:7px}.remember input{accent-color:#1e90ff}.text-link{color:#1e90ff;text-decoration:none}.text-link:hover{text-decoration:underline}.submit{width:100%;padding:13px;border:0;border-radius:9px;background:linear-gradient(135deg,#1e90ff,#0066ff);color:#fff;font-weight:800;font-size:14px;cursor:pointer;box-shadow:0 0 25px rgba(30,144,255,.2)}.submit:disabled{opacity:.65;cursor:wait}.status{display:none;padding:11px 12px;border-radius:8px;font-size:12px;line-height:1.5}.status.show{display:block}.status.error{background:rgba(255,91,110,.09);border:1px solid rgba(255,91,110,.35);color:#ff9aa5}.status.success{background:rgba(40,190,120,.1);border:1px solid rgba(40,190,120,.35);color:#67dfa8}.auth-switch{text-align:center;color:#8b9bb4;font-size:13px;margin-top:21px}.auth-note{text-align:center;color:#60718a;font-size:11px;line-height:1.6;margin-top:18px}.whatsapp{position:fixed;right:22px;bottom:22px;z-index:70;background:#18c968;color:#fff;text-decoration:none;padding:13px 18px;border-radius:30px;font-weight:700;box-shadow:0 8px 30px rgba(24,201,104,.25)}footer{padding:30px 5% 15px;background:#080e1b;border-top:1px solid #121a2e;color:#8b9bb4}.footer-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:28px;max-width:1100px;margin:0 auto 24px}.footer-brand{max-width:280px}.footer-brand .logo img{width:175px;margin-bottom:14px}.footer-brand p{color:#70829e;font-size:12px;line-height:1.7}.footer-column h3{font-size:14px;color:#fff;margin-bottom:14px}.footer-column a{display:block;color:#8b9bb4;text-decoration:none;font-size:12px;margin:0 0 10px}.footer-column a:hover{color:#1e90ff}.footer-bottom{text-align:center;padding-top:16px;border-top:1px solid #121a2e;color:#5a6d8a;font-size:11px;line-height:1.8}@media(max-width:900px){nav,.header-actions{display:none}.menu-btn{display:block}.footer-grid{grid-template-columns:1fr 1fr}.footer-brand{grid-column:1/-1}}@media(max-width:560px){.auth-card{padding:27px 20px}.auth-brand h1{font-size:26px}.footer-grid{grid-template-columns:1fr}.footer-brand{grid-column:auto}.options{align-items:flex-start}}
-</style></head><body><div class="overlay" id="overlay"></div><aside class="sidebar" id="sidebar"><div class="side-head"><a class="logo" href="index.html"><img src="images/logo.jpg" alt="Vertex Core"></a><button class="side-close" id="closeMenu" aria-label="Close menu">×</button></div><div class="side-links"><a href="index.html">HOME</a><a href="pricing.html">PRICING</a><a href="locations.html">LOCATIONS</a><a href="vps.html">VPS</a><a href="support.html">SUPPORT</a><a href="about.html">ABOUT US</a><a href="contact.html">CONTACT US</a></div><div class="side-actions"><a href="order.html" class="btn-blue">Order Now</a><a href="contact.html" class="btn-outline">Contact Us</a></div></aside><header><button class="menu-btn" id="openMenu" aria-label="Open menu">☰</button><a class="logo" href="index.html"><img src="images/logo.jpg" alt="Vertex Core"></a><nav><a href="index.html">Home</a><a href="pricing.html">Pricing</a><a href="vps.html">VPS</a><a href="support.html">Support</a><a href="blog.html">Blog</a></nav><div class="header-actions"><a class="btn-outline" href="login.html">Login</a><a class="btn-blue" href="signup.html">Create Account</a></div></header><main class="auth-main"><section class="auth-card"><div class="auth-brand"><a class="logo" href="index.html"><img src="images/logo.jpg" alt="Vertex Core"></a><div class="eyebrow">SECURE CUSTOMER PORTAL</div><h1>Create Your Account</h1><p>Create your Vertex Core account to manage your hosting services.</p></div><div id="status" class="status" role="status" aria-live="polite"></div><form id="authForm" class="auth-form"><div class="field"><label for="name">Full name</label><input id="name" name="name" type="text" autocomplete="name" placeholder="Your full name" required minlength="2"></div><div class="field"><label for="email">Email address</label><input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required></div><div class="field"><label for="password">Create password</label><div class="password-wrap"><input id="password" name="password" type="password" autocomplete="new-password" placeholder="At least 8 characters" minlength="8" required><button class="show-pass" type="button" data-target="password">SHOW</button></div></div><div class="field"><label for="confirmPassword">Confirm password</label><div class="password-wrap"><input id="confirmPassword" name="confirmPassword" type="password" autocomplete="new-password" placeholder="Re-enter your password" minlength="8" required><button class="show-pass" type="button" data-target="confirmPassword">SHOW</button></div></div><button class="submit" id="submitBtn" type="submit">Create Account</button></form><p class="auth-switch">Already have an account? <a class="text-link" href="login.html">Sign in</a></p><p class="auth-note">By creating an account, you agree to our <a class="text-link" href="terms.html">Terms</a> and <a class="text-link" href="privacy.html">Privacy Policy</a>.</p></section></main><a class="whatsapp" href="https://wa.me/923239529520" target="_blank" rel="noopener">💬 WhatsApp Support</a><footer><div class="footer-grid"><div class="footer-brand"><a class="logo" href="index.html"><img src="images/logo.jpg" alt="Vertex Core"></a><p>Enterprise-grade Windows VPS infrastructure built for performance, secure access and reliable connectivity.</p><p style="margin-top:10px"><a href="mailto:vertexcore95@gmail.com">vertexcore95@gmail.com</a></p></div><div class="footer-column"><h3>Company</h3><a href="about.html">About Us</a><a href="features.html">Services / Features</a><a href="locations.html">Locations</a><a href="vps.html">VPS</a><a href="blog.html">Blog</a></div><div class="footer-column"><h3>Support</h3><a href="support.html">Help &amp; Support</a><a href="docs.html">Documentation</a><a href="dashboard.html">Customer Dashboard</a></div><div class="footer-column"><h3>Legal</h3><a href="terms.html">Terms of Services</a><a href="privacy.html">Privacy Policy</a><a href="refund.html">Refund Policy</a><a href="faqs.html">FAQs</a><a href="contact.html">Contact Us</a></div></div><div class="footer-bottom">© 2026 Vertex Core - All plans include free backups - 99.95% uptime SLA - Cancel anytime - 24/7 Support</div></footer><script>const sidebar=document.getElementById('sidebar'),overlay=document.getElementById('overlay');function openSide(){sidebar.classList.add('open');overlay.classList.add('show')}function closeSide(){sidebar.classList.remove('open');overlay.classList.remove('show')}document.getElementById('openMenu').addEventListener('click',openSide);document.getElementById('closeMenu').addEventListener('click',closeSide);overlay.addEventListener('click',closeSide);document.querySelectorAll('.side-links a,.side-actions a').forEach(a=>a.addEventListener('click',closeSide));</script><script type="module">import { auth, firebaseConfigured } from './firebase-config.js';
-import { createUserWithEmailAndPassword, updateProfile, sendEmailVerification, signOut } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
-const form=document.getElementById('authForm'),status=document.getElementById('status'),submit=document.getElementById('submitBtn');
-form.addEventListener('submit',async e=>{e.preventDefault();hideStatus();const name=document.getElementById('name').value.trim(),email=document.getElementById('email').value.trim(),password=document.getElementById('password').value,confirm=document.getElementById('confirmPassword').value;if(name.length<2)return showStatus('Please enter your full name.','error');if(password.length<8)return showStatus('Your password must be at least 8 characters.','error');if(password!==confirm)return showStatus('Passwords do not match. Please check both fields.','error');if(!firebaseConfigured)return showStatus('Authentication setup is not complete yet. Add your Firebase web config in firebase-config.js first.','error');submit.disabled=true;submit.textContent='Creating account…';try{const cred=await createUserWithEmailAndPassword(auth,email,password);await updateProfile(cred.user,{displayName:name});await sendEmailVerification(cred.user);await signOut(auth);form.reset();showStatus('Account created. Check your inbox and verify your email before signing in.','success');}catch(err){showStatus(authError(err.code),'error');}finally{submit.disabled=false;submit.textContent='Create Account';}});
-function showStatus(message,type){const el=document.getElementById('status');el.textContent=message;el.className='status show '+type}function hideStatus(){const el=document.getElementById('status');el.textContent='';el.className='status'}function authError(code){const messages={'auth/invalid-email':'Please enter a valid email address.','auth/user-not-found':'No account was found for this email. Create an account first.','auth/wrong-password':'Email or password is incorrect.','auth/invalid-credential':'Email or password is incorrect.','auth/email-already-in-use':'An account already exists with this email. Please sign in.','auth/weak-password':'Choose a stronger password with at least 8 characters.','auth/too-many-requests':'Too many attempts. Please wait a little and try again.','auth/network-request-failed':'Network error. Check your internet connection and try again.','auth/operation-not-allowed':'Email/password sign-in is not enabled in Firebase Authentication.'};return messages[code]||'We could not complete this request. Please check your details and try again.'}document.querySelectorAll('.show-pass').forEach(btn=>btn.addEventListener('click',()=>{const input=document.getElementById(btn.dataset.target);const show=input.type==='password';input.type=show?'text':'password';btn.textContent=show?'HIDE':'SHOW'}));
-</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Sign in to securely access your Vertex Core customer account.">
+<script type="module" src="firebase-config.js"></script>
+<link rel="icon" href="/favicon.png" type="image/png">
+<title>Login | Vertex Core</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Inter,Segoe UI,Arial,sans-serif}
+html{scroll-behavior:smooth}
+body{min-height:100vh;background:#060a14;color:#fff;display:flex;flex-direction:column}
+a{color:inherit}
+header{display:flex;justify-content:space-between;align-items:center;padding:15px 5%;background:rgba(10,15,30,.94);border-bottom:1px solid #1a233a;position:sticky;top:0;z-index:50;backdrop-filter:blur(12px)}
+.logo{display:flex;align-items:center;text-decoration:none}
+.logo img{width:185px;height:auto;display:block;object-fit:contain}
+nav a{color:#8b9bb4;text-decoration:none;margin:0 12px;font-size:14px}
+nav a:hover{color:#fff}
+.header-actions{display:flex;align-items:center;gap:12px}
+.btn-blue,.btn-outline{padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:700;display:inline-flex;align-items:center;justify-content:center;border:1px solid transparent;cursor:pointer}
+.btn-blue{background:#1e90ff;color:#fff;box-shadow:0 0 20px rgba(30,144,255,.22)}
+.btn-outline{border-color:#24324a;color:#aab8cb;background:transparent}
+.menu-btn{display:none;background:transparent;border:1px solid #1e90ff;color:#1e90ff;width:42px;height:42px;border-radius:10px;font-size:24px;cursor:pointer}
+.sidebar{position:fixed;top:0;left:-330px;width:310px;height:100vh;background:#080d18;border-right:1px solid #1e90ff;z-index:100;padding:25px;transition:.3s;box-shadow:10px 0 40px rgba(0,0,0,.5)}
+.sidebar.open{left:0}
+.side-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:35px}
+.side-close{width:38px;height:38px;border-radius:50%;background:#0c1525;border:1px solid #27405f;color:#1e90ff;font-size:23px;cursor:pointer}
+.side-links{display:grid;gap:7px}
+.side-links a{padding:13px;color:#aab8cb;text-decoration:none;border-radius:9px}
+.side-links a:hover{background:#0d1a2d;color:#fff}
+.side-actions{display:grid;gap:12px;margin-top:25px}
+.side-actions a{text-align:center}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:90;display:none}
+.overlay.show{display:block}
+.auth-main{flex:1;display:grid;place-items:center;padding:55px 18px;position:relative;isolation:isolate;overflow:hidden}
+.auth-main:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,10,20,.48),#060a14 95%),url('images/hero-servers.jpg') center/cover no-repeat;opacity:.24;z-index:-2}
+.auth-main:after{content:"";position:absolute;width:440px;height:360px;left:50%;top:18%;transform:translateX(-50%);background:rgba(0,123,255,.14);filter:blur(100px);z-index:-1}
+.auth-card{width:min(460px,100%);background:linear-gradient(180deg,#0d1628,#080e1a);border:1px solid #1e90ff;border-radius:20px;padding:34px;box-shadow:0 0 55px rgba(30,144,255,.15)}
+.auth-brand{text-align:center;margin-bottom:25px}
+.auth-brand a{justify-content:center}
+.auth-brand img{width:205px}
+.eyebrow{color:#1e90ff;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:800;margin-bottom:10px}
+.auth-brand h1{font-size:30px;margin:10px 0}
+.auth-brand p{color:#8b9bb4;font-size:13px;line-height:1.7}
+.auth-form{display:grid;gap:16px}
+.field{display:grid;gap:7px}
+.field label{font-size:13px;color:#b9c6d8;font-weight:600}
+.field input{width:100%;padding:13px 14px;border-radius:9px;border:1px solid #24324a;background:#070d18;color:#fff;outline:none;font-size:14px}
+.field input:focus{border-color:#1e90ff;box-shadow:0 0 0 3px rgba(30,144,255,.12)}
+.password-wrap{position:relative}
+.password-wrap input{padding-right:72px}
+.show-pass{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:0;color:#8b9bb4;font-size:12px;font-weight:700;cursor:pointer}
+.options{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:12px;color:#8b9bb4}
+.remember{display:flex;align-items:center;gap:7px}
+.remember input{accent-color:#1e90ff}
+.text-link{color:#1e90ff;text-decoration:none}
+.text-link:hover{text-decoration:underline}
+.submit{width:100%;padding:13px;border:0;border-radius:9px;background:linear-gradient(135deg,#1e90ff,#0066ff);color:#fff;font-weight:800;font-size:14px;cursor:pointer;box-shadow:0 0 25px rgba(30,144,255,.2)}
+.submit:disabled{opacity:.65;cursor:wait}
+.status{display:none;padding:11px 12px;border-radius:8px;font-size:12px;line-height:1.5}
+.status.show{display:block}
+.status.error{background:rgba(255,91,110,.09);border:1px solid rgba(255,91,110,.35);color:#ff9aa5}
+.status.success{background:rgba(40,190,120,.1);border:1px solid rgba(40,190,120,.35);color:#67dfa8}
+.auth-switch{text-align:center;color:#8b9bb4;font-size:13px;margin-top:21px}
+.auth-note{text-align:center;color:#60718a;font-size:11px;line-height:1.6;margin-top:18px}
+.whatsapp{position:fixed;right:22px;bottom:22px;z-index:70;background:#18c968;color:#fff;text-decoration:none;padding:13px 18px;border-radius:30px;font-weight:700;box-shadow:0 8px 30px rgba(24,201,104,.25)}
+footer{padding:30px 5% 15px;background:#080e1b;border-top:1px solid #121a2e;color:#8b9bb4}
+.footer-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:28px;max-width:1100px;margin:0 auto 24px}
+.footer-brand{max-width:280px}
+.footer-brand .logo img{width:175px;margin-bottom:14px}
+.footer-brand p{color:#70829e;font-size:12px;line-height:1.7}
+.footer-column h3{font-size:14px;color:#fff;margin-bottom:14px}
+.footer-column a{display:block;color:#8b9bb4;text-decoration:none;font-size:12px;margin:0 0 10px}
+.footer-column a:hover{color:#1e90ff}
+.footer-bottom{text-align:center;padding-top:16px;border-top:1px solid #121a2e;color:#5a6d8a;font-size:11px;line-height:1.8}
+@media(max-width:900px){nav,.header-actions{display:none}.menu-btn{display:block}.footer-grid{grid-template-columns:1fr 1fr}.footer-brand{grid-column:1/-1}}
+@media(max-width:560px){.auth-card{padding:27px 20px}.auth-brand h1{font-size:26px}.footer-grid{grid-template-columns:1fr}.footer-brand{grid-column:auto}.options{align-items:flex-start}}
+</style>
+</head>
+<body>
+
+<div class="overlay" id="overlay"></div>
+
+<aside class="sidebar" id="sidebar">
+  <div class="side-head">
+    <a class="logo" href="index.html"><img src="images/logo.jpg" alt="Vertex Core"></a>
+    <button class="side-close" id="closeMenu" aria-label="Close menu">×</button>
+  </div>
+  <div class="side-links">
+    <a href="index.html">HOME</a>
+    <a href="pricing.html">PRICING</a>
+    <a href="locations.html">LOCATIONS</a>
+    <a href="vps.html">VPS</a>
+    <a href="support.html">SUPPORT</a>
+    <a href="about.html">ABOUT US</a>
+    <a href="contact.html">CONTACT US</a>
+  </div>
+  <div class="side-actions">
+    <a href="order.html" class="btn-blue">Order Now</a>
+    <a href="contact.html" class="btn-outline">Contact Us</a>
+  </div>
+</aside>
+
+<header>
+  <button class="menu-btn" id="openMenu" aria-label="Open menu">☰</button>
+  <a class="logo" href="index.html"><img src="images/logo.jpg" alt="Vertex Core"></a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="vps.html">VPS</a>
+    <a href="support.html">Support</a>
+    <a href="blog.html">Blog</a>
+  </nav>
+  <div class="header-actions">
+    <a class="btn-outline" href="login.html">Login</a>
+    <a class="btn-blue" href="signup.html">Create Account</a>
+  </div>
+</header>
+
+<main class="auth-main">
+  <section class="auth-card">
+    <div class="auth-brand">
+      <a class="logo" href="index.html"><img src="images/logo.jpg" alt="Vertex Core"></a>
+      <div class="eyebrow">SECURE CUSTOMER PORTAL</div>
+      <h1>Welcome Back</h1>
+      <p>Sign in to securely access your Vertex Core customer account.</p>
+    </div>
+    
+    <div id="status" class="status" role="status" aria-live="polite"></div>
+    
+    <form id="authForm" class="auth-form">
+      <div class="field">
+        <label for="email">Email address</label>
+        <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+      </div>
+      
+      <div class="field">
+        <label for="password">Password</label>
+        <div class="password-wrap">
+          <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Enter your password" required>
+          <button class="show-pass" type="button" data-target="password">SHOW</button>
+        </div>
+      </div>
+      
+      <div class="options">
+        <label class="remember"><input type="checkbox" id="remember" checked> Remember me</label>
+        <button class="text-link" id="forgotBtn" type="button" style="background:none;border:0;cursor:pointer;font:inherit">Forgot password?</button>
+      </div>
+      
+      <button class="submit" id="submitBtn" type="submit">Sign In</button>
+    </form>
+    
+    <p class="auth-switch">New to Vertex Core? <a class="text-link" href="signup.html">Create an account</a></p>
+    <p class="auth-note">Your account is protected by secure email/password authentication.</p>
+  </section>
+</main>
+
+<a class="whatsapp" href="https://wa.me/923239529520" target="_blank" rel="noopener">💬 WhatsApp Support</a>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a class="logo" href="index.html"><img src="images/logo.jpg" alt="Vertex Core"></a>
+      <p>Enterprise-grade Windows VPS infrastructure built for performance, secure access and reliable connectivity.</p>
+      <p style="margin-top:10px"><a href="mailto:vertexcore95@gmail.com">vertexcore95@gmail.com</a></p>
+    </div>
+    <div class="footer-column">
+      <h3>Company</h3>
+      <a href="about.html">About Us</a>
+      <a href="features.html">Services / Features</a>
+      <a href="locations.html">Locations</a>
+      <a href="vps.html">VPS</a>
+      <a href="blog.html">Blog</a>
+    </div>
+    <div class="footer-column">
+      <h3>Support</h3>
+      <a href="support.html">Help &amp; Support</a>
+      <a href="docs.html">Documentation</a>
+      <a href="dashboard.html">Customer Dashboard</a>
+    </div>
+    <div class="footer-column">
+      <h3>Legal</h3>
+      <a href="terms.html">Terms of Services</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="refund.html">Refund Policy</a>
+      <a href="faqs.html">FAQs</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 Vertex Core - All plans include free backups - 99.95% uptime SLA - Cancel anytime - 24/7 Support</div>
+</footer>
+
+<script>
+const sidebar = document.getElementById('sidebar'), overlay = document.getElementById('overlay');
+function openSide(){ sidebar.classList.add('open'); overlay.classList.add('show'); }
+function closeSide(){ sidebar.classList.remove('open'); overlay.classList.remove('show'); }
+document.getElementById('openMenu').addEventListener('click', openSide);
+document.getElementById('closeMenu').addEventListener('click', closeSide);
+overlay.addEventListener('click', closeSide);
+document.querySelectorAll('.side-links a,.side-actions a').forEach(a => a.addEventListener('click', closeSide));
+</script>
+
+<script type="module">
+import { auth, firebaseConfigured } from './firebase-config.js';
+import { signInWithEmailAndPassword, setPersistence, browserLocalPersistence, browserSessionPersistence, sendPasswordResetEmail } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
+
+const form = document.getElementById('authForm'), status = document.getElementById('status'), submit = document.getElementById('submitBtn');
+
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  hideStatus();
+  
+  if (!firebaseConfigured) {
+    return showStatus('Authentication setup is not complete yet. Add your Firebase web config in firebase-config.js first.', 'error');
+  }
+
+  submit.disabled = true;
+  submit.textContent = 'Signing in…';
+
+  try {
+    await setPersistence(auth, document.getElementById('remember').checked ? browserLocalPersistence : browserSessionPersistence);
+    
+    // Login User
+    await signInWithEmailAndPassword(auth, document.getElementById('email').value.trim(), document.getElementById('password').value);
+    
+    // Success hone par seedha index.html par bhej kar welcome animation dikhayein
+    window.location.href = 'index.html?welcome=true';
+
+  } catch (err) {
+    showStatus(authError(err.code), 'error');
+  } finally {
+    submit.disabled = false;
+    submit.textContent = 'Sign In';
+  }
+});
+
+document.getElementById('forgotBtn').addEventListener('click', async () => {
+  hideStatus();
+  if (!firebaseConfigured) return showStatus('Authentication setup is not complete yet. Configure Firebase first.', 'error');
+  
+  const email = document.getElementById('email').value.trim();
+  if (!email) return showStatus('Enter your email address above first, then choose Forgot password.', 'error');
+
+  try {
+    await sendPasswordResetEmail(auth, email);
+    showStatus('If an account exists for this email, a password reset link has been sent.', 'success');
+  } catch (err) {
+    showStatus(authError(err.code), 'error');
+  }
+});
+
+function showStatus(message, type) {
+  const el = document.getElementById('status');
+  el.textContent = message;
+  el.className = 'status show ' + type;
+}
+
+function hideStatus() {
+  const el = document.getElementById('status');
+  el.textContent = '';
+  el.className = 'status';
+}
+
+function authError(code) {
+  const messages = {
+    'auth/invalid-email': 'Please enter a valid email address.',
+    'auth/user-not-found': 'No account was found for this email. Create an account first.',
+    'auth/wrong-password': 'Email or password is incorrect.',
+    'auth/invalid-credential': 'Email or password is incorrect.',
+    'auth/email-already-in-use': 'An account already exists with this email. Please sign in.',
+    'auth/weak-password': 'Choose a stronger password with at least 8 characters.',
+    'auth/too-many-requests': 'Too many attempts. Please wait a little and try again.',
+    'auth/network-request-failed': 'Network error. Check your internet connection and try again.',
+    'auth/operation-not-allowed': 'Email/password sign-in is not enabled in Firebase Authentication.'
+  };
+  return messages[code] || 'We could not complete this request. Please check your details and try again.';
+}
+
+document.querySelectorAll('.show-pass').forEach(btn => btn.addEventListener('click', () => {
+  const input = document.getElementById(btn.dataset.target);
+  const show = input.type === 'password';
+  input.type = show ? 'text' : 'password';
+  btn.textContent = show ? 'HIDE' : 'SHOW';
+}));
+</script>
+</body>
+</html>
