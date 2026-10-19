@@ -1716,6 +1716,26 @@ a.addEventListener('click',closeSide)
 });
 
 </script>
+<div id="welcomeToast" style="position:fixed; top:30px; left:50%; transform:translateX(-50%) translateY(-100px); background:linear-gradient(135deg, #1e90ff, #0066ff); color:#fff; padding:15px 30px; border-radius:12px; font-weight:800; font-size:16px; box-shadow:0 10px 30px rgba(30,144,255,0.4); z-index:9999; transition:transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); opacity:0;">
+  🚀 WELCOME TO VERTEX CORE!
+</div>
 
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('welcome') === 'true') {
+    const toast = document.getElementById('welcomeToast');
+    setTimeout(() => {
+      toast.style.transform = 'translateX(-50%) translateY(0)';
+      toast.style.opacity = '1';
+    }, 300);
+
+    setTimeout(() => {
+      toast.style.transform = 'translateX(-50%) translateY(-100px)';
+      toast.style.opacity = '0';
+    }, 4000);
+  }
+});
+</script>
 </body>
 </html>
