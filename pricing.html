@@ -39,7 +39,7 @@ const premiumPricing={
   "4gb":{"Monthly":35,"Quarterly":105,"Semi-Annually":210,"Annually":420}
 };
 ["Italy","Greece","Norway","Canada","London","Spain","Manchester UK","Germany","Sweden","France","Austria","Belgium","Hungary","Netherlands","Ireland","Australia"].forEach(country=>{pricingByCountry[country]=JSON.parse(JSON.stringify(standardPricing));});
-pricingByCountry["USA"]={"2gb":{"Monthly":10,"Quarterly":30,"Semi-Annually":60,"Annually":100},"4gb":{"Monthly":18,"Quarterly":24,"Semi-Annually":48,"Annually":80},"8gb":{"Monthly":32,"Quarterly":96,"Semi-Annually":192,"Annually":320}};
+pricingByCountry["USA"]={"2gb":{"Monthly":10,"Quarterly":30,"Semi-Annually":60,"Annually":100},"4gb":{"Monthly":18,"Quarterly":72,"Semi-Annually":144,"Annually":240},"8gb":{"Monthly":32,"Quarterly":96,"Semi-Annually":192,"Annually":320}};
 pricingByCountry["UK"]=JSON.parse(JSON.stringify(pricingByCountry["USA"]));
 ["KSA","South Korea","Bangladesh","Bahrain","Qatar","UAE"].forEach(country=>{pricingByCountry[country]=JSON.parse(JSON.stringify(premiumPricing));});
 const locationInput=document.getElementById('locationInput'),locationDropdown=document.getElementById('locationDropdown'),locationArrow=document.getElementById('locationArrow'),locationStatus=document.getElementById('locationStatus'),planCards=document.querySelectorAll('.plan-card');let selectedLocation='';
